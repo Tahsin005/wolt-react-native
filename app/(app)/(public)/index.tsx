@@ -5,6 +5,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { Colors, Fonts } from "@/constants/theme";
 import { Text, View, StyleSheet, Image, TouchableOpacity, Linking } from "react-native";
 import Animated, { FadeInDown } from "react-native-reanimated"
+import { Link } from "expo-router";
 
 export default function Index() {
   const openWebBrowser = () => {
@@ -50,9 +51,11 @@ export default function Index() {
             <GoogleAuthButton />
           </Animated.View>
           <Animated.View entering={FadeInDown.delay(300)}>
+            <Link href={'/(app)/(public)/other-options'} asChild>
             <TouchableOpacity style={styles.otherButton}>
               <Text style={styles.otherButtonText}>Other Options</Text>
             </TouchableOpacity>
+            </Link>
           </Animated.View>
         </View>
 
