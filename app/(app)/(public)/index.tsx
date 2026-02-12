@@ -1,5 +1,7 @@
 import AppleAuthButton from "@/components/auth/AppleAuthButton";
 import GoogleAuthButton from "@/components/auth/GooleAuthButton";
+import SmoothInfiniteScroll from "@/components/SmoothInfiniteScroll";
+import { LinearGradient } from 'expo-linear-gradient';
 import { Colors, Fonts } from "@/constants/theme";
 import { Text, View, StyleSheet, Image, TouchableOpacity, Linking } from "react-native";
 import Animated, { FadeInDown } from "react-native-reanimated"
@@ -13,7 +15,25 @@ export default function Index() {
       style={styles.container}
     >
       <View style={styles.infiniteScrollContainer}>
-
+        <View>
+          <SmoothInfiniteScroll scrollDirection="down" iconSet="set1" />
+        </View>
+        <View>
+          <SmoothInfiniteScroll scrollDirection="up" iconSet="set2" />
+        </View>
+        <View>
+          <SmoothInfiniteScroll scrollDirection="down" iconSet="set3" />
+        </View>
+        <LinearGradient
+          colors={['transparent', '#fff']}
+          style={{
+            position: 'absolute',
+            height: 200,
+            left: 0,
+            bottom: 0,
+            right: 0,
+          }}
+        />
       </View>
       <View style={styles.contentContainer}>
         <Image source={require('@/assets/images/wolt-logo.png')} style={styles.brandLogo} />
@@ -106,6 +126,12 @@ const styles = StyleSheet.create({
     textDecorationLine: 'underline',
   },
   infiniteScrollContainer: {
-    flex: 0.8
-  }
+    flex: 0.8,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    gap: 4,
+    position: 'relative',
+    overflow: 'hidden',
+  },
 })
