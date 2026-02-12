@@ -1,9 +1,16 @@
 import { Slot } from "expo-router";
-import { StatusBar } from "react-native";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { useFonts } from "expo-font";
-import { Nunito_400Regular, Nunito_700Bold, Nunito_900Black } from "@expo-google-fonts/nunito"
+import {
+  Nunito_400Regular,
+  Nunito_700Bold,
+  Nunito_900Black
+} from "@expo-google-fonts/nunito";
+import {
+  SafeAreaProvider,
+  SafeAreaView
+} from "react-native-safe-area-context";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -15,18 +22,23 @@ const queryClient = new QueryClient({
 });
 
 export default function RootLayout() {
-  let [fontsLoaded] = useFonts({
+  const [fontsLoaded] = useFonts({
     Nunito_400Regular,
     Nunito_700Bold,
-    Nunito_900Black
-  })
+    Nunito_900Black,
+  });
+
   if (!fontsLoaded) return null;
+
   return (
-    <GestureHandlerRootView style={{ flex: 1 }}>
-      <StatusBar barStyle="dark-content" />
-      <QueryClientProvider client={queryClient}>
-        <Slot />
-      </QueryClientProvider>
-    </GestureHandlerRootView>
+    <SafeAreaProvider>
+      <GestureHandlerRootView style={{ flex: 1 }}>
+        <SafeAreaView style={{ flex: 1 }} edges={["top", "left", "right"]}>
+          <QueryClientProvider client={queryClient}>
+            <Slot />
+          </QueryClientProvider>
+        </SafeAreaView>
+      </GestureHandlerRootView>
+    </SafeAreaProvider>
   );
 }
