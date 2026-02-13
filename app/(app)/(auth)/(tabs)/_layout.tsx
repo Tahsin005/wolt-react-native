@@ -8,9 +8,7 @@ const Layout = () => {
                 tabBarLabelStyle: {
                     fontSize: 9,
                     fontWeight: '600',
-                },
-                tabBarActiveTintColor: '#000',
-                tabBarInactiveTintColor: '#888',
+                }
             }}
         >
             <Tabs.Screen
@@ -62,7 +60,7 @@ const Layout = () => {
                 name="search"
                 options={{
                     title: 'Search',
-                    headerShown: false,
+                    // headerShown: false,
                     tabBarIcon: ({ color, size, focused }) => (
                         <Ionicons
                             name={focused ? 'search' : 'search-outline'}

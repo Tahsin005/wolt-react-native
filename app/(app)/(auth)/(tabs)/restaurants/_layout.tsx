@@ -7,6 +7,7 @@ const Page = () => {
             <Stack.Screen
                 name="index"
                 options={{
+                    headerShown: false,
                     headerLargeTitle: true,
                     headerTitle: 'Restaurants',
                     headerLargeTitleStyle: {
