@@ -81,6 +81,12 @@ const Layout = () => {
       />
       <Stack.Screen
         name="order"
+        options={{
+          headerTitle: "Your Orders",
+          headerTitleStyle: {
+            fontWeight: "400"
+          }
+        }}
       />
     </Stack>
   );

@@ -10,7 +10,7 @@ export interface OrderData {
   deliveryTime: 'standard' | 'schedule';
   selectedTimeSlot?: string;
   tipAmount: number;
-  paymentMethod: 'applepay' | 'card';
+  paymentMethod: 'applepay' | 'googlepay' | 'card';
   subtotal: number;
   serviceFee: number;
   deliveryFee: number;
