@@ -100,7 +100,7 @@ const RestaurantHeader = ({ title, scrollOffset }: RestaurantHeaderProps) => {
                         <View style={styles.locationButtonIcon}>
                             <Ionicons name="business-outline" size={16} />
                         </View>
-                        <Text style={styles.locationText}>Münster</Text>
+                        <Text style={styles.locationText}>Khagan</Text>
                         <Ionicons name="chevron-down" size={16} />
                     </TouchableOpacity>
                 </Link>

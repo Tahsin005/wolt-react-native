@@ -11,6 +11,9 @@ const Layout = () => {
       <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
       <Stack.Screen
         name="(modal)/(restaurant)/[id]"
+        options={{
+          headerShown: false,
+        }}
       />
       <Stack.Screen
         name="(modal)/map"
@@ -18,14 +21,7 @@ const Layout = () => {
           headerTitle: "(Webview). No Money for Goole Maps API Key",
           headerTitleStyle: {
             fontSize: 14
-          },
-          headerLeft: ({ tintColor }) => (
-            <Ionicons
-              name="arrow-back"
-              size={24}
-              color={tintColor ?? 'black'}
-            />
-          ),
+          }
         }}
       />
       <Stack.Screen
