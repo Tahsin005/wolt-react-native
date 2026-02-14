@@ -23,7 +23,10 @@ const RestaurantListPage = () => {
         scrollEventThrottle={16}
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{ paddingTop: insets.top + HEADER_HEIGHT }}>
-        <Text style={styles.pageTitle}>Restaurants</Text>
+        <View style={styles.titleContainer}>
+          <Text style={styles.pageTitle}>Restaurants</Text>
+          <Text style={styles.pageSubtitle}>Delicious food delivered to your door</Text>
+        </View>
         <CategoryList />
 
         <Text style={styles.allRestaurantsTitle}>All restaurants</Text>
@@ -37,11 +40,21 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
+  titleContainer: {
+    paddingHorizontal: 16,
+    paddingBottom: 8,
+  },
   pageTitle: {
     fontFamily: Fonts.brandBlack,
     fontSize: 30,
+    color: '#000',
+  },
+  pageSubtitle: {
+    fontFamily: Fonts.brand,
+    fontSize: 14,
+    color: '#666',
+    marginTop: 4,
     marginBottom: 16,
-    paddingHorizontal: 16,
   },
   allRestaurantsTitle: {
     fontFamily: Fonts.brandBold,
