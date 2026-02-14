@@ -6,7 +6,7 @@ const Layout = () => {
         <Tabs
             screenOptions={{
                 tabBarLabelStyle: {
-                    fontSize: 9,
+                    fontSize:12,
                     fontWeight: '600',
                 }
             }}
