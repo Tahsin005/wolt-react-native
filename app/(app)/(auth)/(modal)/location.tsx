@@ -1,11 +1,15 @@
+import SheetHandle from '@/components/SheetHandle';
 import { Colors, Fonts } from '@/constants/theme';
 import { Ionicons } from '@expo/vector-icons';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
+
 const Page = () => {
   return (
     <View style={styles.container}>
+      <SheetHandle />
       <Text style={styles.title}>Location</Text>
+
 
       {/* Use Current Location */}
       <TouchableOpacity style={styles.locationItem}>
