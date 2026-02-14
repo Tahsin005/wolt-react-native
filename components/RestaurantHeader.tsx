@@ -6,6 +6,7 @@ import Animated, {
     Extrapolation,
     interpolate,
     SharedValue,
+    useAnimatedProps,
     useAnimatedStyle,
 } from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -76,10 +77,25 @@ const RestaurantHeader = ({ title, scrollOffset }: RestaurantHeaderProps) => {
         };
     });
 
+    const header1Props = useAnimatedProps(() => {
+        return {
+            pointerEvents: scrollOffset.value > SCOLL_THRESHOLD * 0.6 ? 'none' : ('auto' as any),
+        };
+    });
+
+    const header2Props = useAnimatedProps(() => {
+        return {
+            pointerEvents: scrollOffset.value < SCOLL_THRESHOLD * 0.3 ? 'none' : ('auto' as any),
+        };
+    });
+
     return (
         <Animated.View style={[styles.headerContainer, shadowStyle, { paddingTop: insets.top }]}>
-            <Animated.View style={[styles.header1, header1Style]}>
-                <Link href={'/(app)/(public)/other-options'} asChild>
+            <Animated.View
+                style={[styles.header1, header1Style]}
+                animatedProps={header1Props}
+            >
+                <Link href={'/(app)/(auth)/(modal)/location'} asChild>
                     <TouchableOpacity style={styles.locationButton}>
                         <View style={styles.locationButtonIcon}>
                             <Ionicons name="business-outline" size={16} />
@@ -90,12 +106,12 @@ const RestaurantHeader = ({ title, scrollOffset }: RestaurantHeaderProps) => {
                 </Link>
 
                 <View style={styles.rightIcons}>
-                    <Link href={'/(app)/(public)/other-options'} asChild>
+                    <Link href={'/(app)/(auth)/(modal)/filter'} asChild>
                         <TouchableOpacity style={styles.iconButton}>
                             <Ionicons name="filter" size={20} />
                         </TouchableOpacity>
                     </Link>
-                    <Link href={'/(app)/(public)/other-options'} asChild>
+                    <Link href={'/(app)/(auth)/(modal)/map'} asChild>
                         <TouchableOpacity style={styles.iconButton}>
                             <Ionicons name="map-outline" size={20} />
                         </TouchableOpacity>
@@ -103,10 +119,13 @@ const RestaurantHeader = ({ title, scrollOffset }: RestaurantHeaderProps) => {
                 </View>
             </Animated.View>
 
-            <Animated.View style={[styles.header2, header2Style]}>
+            <Animated.View
+                style={[styles.header2, header2Style]}
+                animatedProps={header2Props}
+            >
                 <View style={styles.centerContent}>
                     <Text style={styles.titleSmall}>{title}</Text>
-                    <Link href={'/(app)/(public)/other-options'} asChild>
+                    <Link href={'/(app)/(auth)/(modal)/location'} asChild>
                         <TouchableOpacity style={styles.locationSmall}>
                             <Text style={styles.locationSmallText}>Münster</Text>
                             <Ionicons name="chevron-down" size={14} />
@@ -114,7 +133,7 @@ const RestaurantHeader = ({ title, scrollOffset }: RestaurantHeaderProps) => {
                     </Link>
                 </View>
                 <View style={styles.rightIcons}>
-                    <Link href={'/(app)/(public)/other-options'} asChild>
+                    <Link href={'/(app)/(auth)/(modal)/filter'} asChild>
                         <TouchableOpacity style={styles.iconButton}>
                             <Ionicons name="filter" size={20} />
                         </TouchableOpacity>
